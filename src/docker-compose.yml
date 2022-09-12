@@ -1,0 +1,65 @@
+version: '3'
+services:
+
+    #PHP SERVICE
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: pauloaugustot/php
+        container_name: app
+        restart: unless-stopped
+        tty: true
+        environment:
+            SERVICE_NAME: app
+            SERVICE_TAG: dev
+        working_dir: /var/www
+        volumes: 
+            - ./:/var/www
+            - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - app-network
+
+    #NGINX SERVICE
+    webserver:
+        image: nginx:alpine
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./:/var/www
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
+        networks: 
+            - app-network
+
+    #MYSQL SERVICE
+    db:
+        platform: linux/x86_64
+        image: mariadb:10
+        container_name: db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: feegow
+            MYSQL_ROOT_PASSWORD: 090302
+            SERVICE_TAG: dev
+            SERVICE_NAME: mysql
+        volumes: 
+            - dbdata:/var/lib/mysql
+            - ./mysql/mysql.cnf:/etc/mysql/mysql.cnf
+        networks: 
+            - app-network
+
+#NETWORKS
+networks:
+    app-network:
+        driver: bridge
+#VOLUMES
+volumes:
+    dbdata:
+        driver: local
