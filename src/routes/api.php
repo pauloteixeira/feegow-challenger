@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/specialties/list', 'FeegowApiController@listSpecialties')->name("specialties.list");
+Route::get('/patient/source/list', 'FeegowApiController@listPatiantSource')->name("patient.list.source");
+Route::post('/professionals/list', 'FeegowApiController@listProfessionals')->name("professionals.list");
+Route::post('/appointment/save', 'AppointmentController@save')->name("appointment.save");
