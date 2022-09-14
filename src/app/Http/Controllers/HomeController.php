@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use App\Http\Helpers\ApiHelper;
 
 class HomeController extends Controller
 {

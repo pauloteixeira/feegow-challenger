@@ -18,6 +18,15 @@
     justify-content: center;
 }
 
+.top-text {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: right;
+    color: #fff;
+}
+
+.position-top { padding-top: 10px; }
+
 .box-center {
     width: 70%;
     display: flex;
@@ -46,3 +55,35 @@
     font-size: 20px;
  }
 
+ .loading-content {
+    align-items: center;
+    display: flex;
+    height: 85%;
+    justify-content: center;
+}
+
+ .loader {
+    background-color: rgba(230,232,250,0.8);
+    display: none;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    text-align:center;
+    width:100%;
+    z-index:190000;
+}
+
+#wrapper {
+    text-align: center;
+}
+
+div.center {
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+select {
+    width:200px;
+}
