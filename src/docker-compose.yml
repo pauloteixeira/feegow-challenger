@@ -17,6 +17,7 @@ services:
         volumes: 
             - ./:/var/www
             - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        command: sh -c "composer install --ignore-platform-reqs"
         networks:
             - app-network
 
@@ -46,7 +47,7 @@ services:
             - "3306:3306"
         environment:
             MYSQL_DATABASE: feegow
-            MYSQL_ROOT_PASSWORD: 090302
+            MYSQL_ROOT_PASSWORD: senhaFeegow2022
             SERVICE_TAG: dev
             SERVICE_NAME: mysql
         volumes: 
