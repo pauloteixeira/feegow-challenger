@@ -70,6 +70,7 @@ Caso não tenha o PHP e o Composer instalado na maquina execute o comando abaixo
 ```bash
 $ docker exec -it app /bin/bash
 $ composer install --ignore-platform-reqs
+$ composer update
 $ exit
 ```
 
@@ -92,13 +93,6 @@ CREATE TABLE IF NOT EXISTS `feegow`.`appointments` (
     date_time DATE NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
-```
-
-Caso já tenha uma senha utilizada em outro momento, execute o script abaixo para trocar a senha para a aplicação conseguir conectar no banco:
-
-```SQL
-GRANT ALL ON feegow.* TO 'root'@'%' IDENTIFIED BY 'senhaFeegow2022';
-FLUSH PRIVILEGES;
 ```
 
 ## UTILIZAR A APLICAÇÃO
