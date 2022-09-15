@@ -7,6 +7,7 @@ const titleAppointResult    = $("#title-appoint-result");
 const divDataResult         = $("#div-data-result-specialty");
 const birthdate             = $("#birthdate");
 const cpf                   = $("#cpf");
+const alerta                = $("#succ-alert");
 
 $(document).ready(function() {
     divAppointResult.hide();
@@ -16,6 +17,7 @@ $(document).ready(function() {
     findPatientSource();
     birthdate.mask('99/99/9999');
     cpf.mask("999.999.999-99");
+    alerta.hide();
 })
 
 function toggleModalActionButton( event ) {
@@ -89,12 +91,18 @@ function patientSourceHandler(data) {
     selSource.empty().html(html.join(''));
 }
 
+function verifyIfTratamentoExists( value ) {
+    if( String(value).length == 0 || value == "null" || value == null || value == undefined ) return "";
+
+    return value + " ";
+}
 
 function mountHtmlSpecialists( data, especialidade_id ) {
     let countItems  = 0;
     let _html       = '';
 
     for( var key in data ){
+        let professionalName = verifyIfTratamentoExists(data[key].tratamento)+data[key].nome
         if( ++countItems === 1 ) {
             _html += '<div class="row">';
         }
@@ -102,11 +110,11 @@ function mountHtmlSpecialists( data, especialidade_id ) {
         _html += '  <div class="col-md-3 border-box">';
         _html += '      <div class="row">';
         _html += '          <div class="col-md-4"><img src="/images/avatar.jpg" alt="avatar" width="50px"></div>';
-        _html += '          <div class="col-md-8 title-name-doctor">'+data[key].tratamento+' '+data[key].nome+'</div>';
+        _html += '          <div class="col-md-8 title-name-doctor">'+professionalName+'</div>';
         _html += '      </div>';
         _html += '      <div class="row">';
         _html += '           <div class="col-md-12">';
-        _html += '              <center><button type="button" class="btn btn-sm btn-success" onclick="doAppointment('+especialidade_id+', \''+data[key].tratamento+' '+data[key].nome+'\','+data[key].profissional_id+')" >AGENDAR</button></center>';
+        _html += '              <center><button type="button" class="btn btn-sm btn-success" onclick="doAppointment('+especialidade_id+', \''+professionalName+'\','+data[key].profissional_id+')" >AGENDAR</button></center>';
         _html += '           </div>';
         _html += '      </div>';
         _html += '  </div>';
@@ -167,6 +175,8 @@ function doSaveAppointment() {
                             });
 
     clearAndCloseModal();
+    alerta.empty().html("Agendamento realizado com sucesso.");
+    alerta.show("slow");
 }
 
 function clearAndCloseModal() {

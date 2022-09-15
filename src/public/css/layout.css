@@ -84,6 +84,4 @@ div.center {
     margin-right: auto;
 }
 
-select {
-    width:200px;
-}
+.center-text{ text-align: center; }

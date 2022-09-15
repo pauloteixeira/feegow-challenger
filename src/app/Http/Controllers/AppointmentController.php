@@ -10,8 +10,7 @@ class AppointmentController extends Controller {
         if( $request->isMethod('POST') ) {
             $model = new Appointments();
             $model->fill($request->post());
-
-            $model->doSave();
+            $model->save();
         }
     }
 }

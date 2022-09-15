@@ -7,13 +7,13 @@
         <div class="row center">
             <form>
                 <div class="row position-top">
-                    <div class="col-md-4 top-text">Consulta de</div>
-                    <div class="col-md-5">
+                    <div class="col-md-4 col-sm-4 top-text">Consulta de</div>
+                    <div class="col-md-5 col-sm-5">
                         <select class="form-control" id="sel-especiality">
                             <option value="" disabled selected>Selecione a especialidade</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-sm-1">
                         <button type="button" class="btn btn-success" id="btn-appoint" disabled>AGENDAR</button>
                     </div>
                 </div>
@@ -21,6 +21,8 @@
         </div>
     </div>
 </div>
+
+<div id="succ-alert" class="alert alert-success center-text" role="alert"></div>
 
 <div id="div-appoint-result" class="row">
     <div class="col-md-12">

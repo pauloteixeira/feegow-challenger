@@ -4,7 +4,7 @@ namespace App\Http\Helpers;
 use \GuzzleHttp\Exception\GuzzleException;
 use \GuzzleHttp\Client;
 
-class ApiHelper {
+trait ApiHelper {
     public $header;
     public $body;
     public $url;
