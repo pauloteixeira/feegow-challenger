@@ -17,14 +17,13 @@ services:
         volumes: 
             - ./:/var/www
             - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
-        command: sh -c "composer install --ignore-platform-reqs"
         networks:
             - app-network
 
     #NGINX SERVICE
     webserver:
         image: nginx:alpine
-        container_name: webserver
+        container_name: serverapp
         restart: unless-stopped
         tty: true
         ports:
@@ -33,7 +32,7 @@ services:
         volumes:
             - ./:/var/www
             - ./nginx/conf.d/:/etc/nginx/conf.d/
-        networks: 
+        networks:
             - app-network
 
     #MYSQL SERVICE
