@@ -18,6 +18,35 @@ Tendo o Docker configurado na maquina basta seguir os passos abaixo:
 $ cd src
 $ docker-compose up -d
 ```
+
+## CRIAÇÃO DO ARQUIVO DE VARIÁVEIS DE AMBIENTE
+Será necessário criar o arquivo .env na raiz da pasta src do projeto.
+Crie o arquivo e cole o conteúdo abaixo: (Obs. No atributo FEEGOW_API_TOKEN= trocar o valor TOKEN_API_FEEGOW pelo TOKEN de acesso da api.)
+
+```bash
+APP_NAME=Feegow
+APP_ENV=local
+APP_KEY=CC8BE9D2AC3A698FC5B79910A8E727F9
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
+
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=feegow
+DB_USERNAME=root
+DB_PASSWORD=senhaFeegow2022
+
+FEEGOW_API_TOKEN=TOKEN_API_FEEGOW
+FEEGOW_URL_LISTA_ESPECIALIDADES=https://api.feegow.com/v1/api/specialties/list
+FEEGOW_URL_LISTA_PROFISSIONAIS=https://api.feegow.com/v1/api/professional/list
+FEEGOW_URL_LISTA_PATIENT_SOURCE=https://api.feegow.com/v1/api/patient/list-sources
+```
+
 ## C0NFIGURANDO O BANCO DA APLICAÇÃO
 Como banco de dados o Docker também irá montar um MySQL Server local para utilizar com essa aplicação. Após a fase anterior de inicialização da aplicação, você precisará criar uma senha no banco e criar o database e a tabela utilizando os scripts abaixo:
 
