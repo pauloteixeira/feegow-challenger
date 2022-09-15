@@ -19,7 +19,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         
-        <link href="{{ asset('css/layout.css') }}?l=<?= time(); ?>" rel="stylesheet">
+        <link href="{{ asset('css/layout.min.css') }}" rel="stylesheet">
     </head>
     <body>
             <div class="content">

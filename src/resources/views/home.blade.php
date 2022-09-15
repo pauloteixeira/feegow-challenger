@@ -77,6 +77,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" integrity="sha512-d4KkQohk+HswGs6A1d6Gak6Bb9rMWtxjOa0IiY49Q3TeFd5xAzjWXDCBW9RS7m86FQ4RzM2BdHmdJnnKRYknxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="{{ asset('js/httpResources.js') }}" defer></script>
-<script src="{{ asset('js/app_home.js?=') }}<?= time(); ?>" defer></script>
+<script src="{{ asset('js/httpResources.min.js') }}" defer></script>
+<script src="{{ asset('js/app.min.js') }}" defer></script>
 @endsection
