@@ -23,25 +23,6 @@ class Appointments extends Model
     ];
     protected $appends			= [];
 
-    public function doSave () : Appointments {
-        if( false == empty($this->date_time) )
-            $this->date_time = \DateTime::createFromFormat('d/m/Y', $this->date_time)->format("Y-m-d h:i:s");
-
-        $this->birthdate = \DateTime::createFromFormat('d/m/Y', $this->birthdate)->format("Y-m-d");
-		$this->save();
-
-		return $this;
-	}
-
-    public function doUpdate () : Appointment {
-        if( false == empty($this->date_time) )
-            $this->date_time = \DateTime::createFromFormat('d/m/Y', $this->date_time)->format("Y-m-d");
-
-		$this->save();
-
-		return $this;
-    }
-
     protected function getDateTimeFormatadoAttribute ()
 	{
 		return date('d/m/Y H:i:s', strtotime($this->attributes['date_time']));
@@ -50,6 +31,23 @@ class Appointments extends Model
     protected function getBirthDateFormatadoAttribute ()
 	{
 		return date('d/m/Y', strtotime($this->attributes['birthdate']));
+	}
+
+	public static function boot()
+    {
+		parent::boot();
+
+		static::creating(function ($model) {
+			if( false == empty($model->date_time) )
+				$model->date_time = \DateTime::createFromFormat('d/m/Y', $model->date_time)->format("Y-m-d h:i:s");
+	
+			$model->birthdate = \DateTime::createFromFormat('d/m/Y', $model->birthdate)->format("Y-m-d");
+		});
+
+		static::updating(function ($model) {
+			if( false == empty($model->date_time) )
+				$model->date_time = \DateTime::createFromFormat('d/m/Y', $model->date_time)->format("Y-m-d h:i:s");
+		});
 	}
 
 }
