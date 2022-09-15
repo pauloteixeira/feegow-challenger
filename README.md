@@ -76,7 +76,7 @@ $ exit
 ## C0NFIGURANDO O BANCO DA APLICAÇÃO
 O Docker irá montar uma imagem com o MySQL já configurado, porém caso já tenha sido criada uma imagem com os mesmos parâmetros, pode ser que não configure senha corretamente.
 
-Por default a imagem vai criar uma imagem já com a senha senhaFeegow2022 configurada. Então basta tentar logar por sua IDE favorita utilizando username: root password: senhaFeegow2022.
+Por default o docker vai criar uma imagem já com a senha senhaFeegow2022 configurada. Então basta tentar logar por sua IDE favorita utilizando username: root e password: senhaFeegow2022.
 Se ocorrer tudo certo com login e senha basta executar o script de criação da tabela abaixo:
 
 ```SQL
