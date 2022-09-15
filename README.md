@@ -2,7 +2,7 @@
 Desafio técnico para cargo de arquitetura na Feegow
 
 ## TECNOLOGIAS
-- NGINEX
+- NGINX
 - PHP7.3-fpm
 - Laravel
 - MariaDB
