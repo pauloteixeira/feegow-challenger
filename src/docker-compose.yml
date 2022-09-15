@@ -17,8 +17,6 @@ services:
         volumes: 
             - ./:/var/www
             - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
-            - ./mysql/init_db.sh:/var/mysql/init_db.sh
-            - ./mysql/dump.sql:/var/mysql/dump.sql
         networks:
             - app-network
 

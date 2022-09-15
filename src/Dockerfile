@@ -11,9 +11,12 @@ RUN apt-get update && apt-get install -y \
     build-essential libpng-dev libjpeg62-turbo-dev libfreetype6-dev \
     locales jpegoptim optipng pngquant gifsicle \
     libzip-dev \
-    zip \
+    zip\
     vim unzip git curl \
     && docker-php-ext-install zip
+
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
 
 #CLEAR CACHE
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -41,7 +44,6 @@ USER www
 
 RUN composer install --ignore-platform-reqs
 RUN npm install
-RUN /var/mysql/init_db.sh
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000

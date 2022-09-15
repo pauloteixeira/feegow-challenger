@@ -19,21 +19,16 @@ $ cd src
 $ docker-compose up -d
 ```
 ## C0NFIGURANDO O BANCO DA APLICAÇÃO
-Como banco de dados, o Docker também irá montar um MySQL Server local para utilizar com essa aplicação. Após a fase anterior de inicialização da aplicação, você precisará criar uma senha no banco e criar o database e a tabela utilizando os scripts abaixo:
+Como banco de dados o Docker também irá montar um MySQL Server local para utilizar com essa aplicação. Após a fase anterior de inicialização da aplicação, você precisará criar uma senha no banco e criar o database e a tabela utilizando os scripts abaixo:
 
-Autentique-se no banco mysql localhost -u root ou pela sua IDE favorita, e execute o script abaixo:
-
-```SQL
-GRANT ALL ON savemoney.* TO 'root'@'%' IDENTIFIED BY 'senhaFeegow2022'; -- esta senha é importante pois a aplicação irá conectar no servidor com ela.
-FLUSH PRIVILEGES;
-```
+Autentique-se no banco mysql localhost -u root ou pela sua IDE favorita, e execute os scripts abaixo:
 
 Abaixo vamos criar o database que a aplicação precisa.
 ```SQL
 CREATE DATABASE feegow;
 ```
 
-Abaixo vamos criar a tabela.
+Abaixo vamos criar a tabela e alterar a senha de root para a senha que a aplicação vai utilizar, nas próximas conexões com a sua IDE você precisará inserir a mesma senha.
 ```SQL
 USE feegow;
 CREATE TABLE IF NOT EXISTS `feegow`.`appointments` (
