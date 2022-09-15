@@ -38,7 +38,6 @@ services:
 
     #MYSQL SERVICE
     db:
-        platform: linux/x86_64
         image: mariadb:10
         container_name: db
         restart: unless-stopped
