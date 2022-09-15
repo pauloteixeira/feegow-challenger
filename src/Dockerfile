@@ -38,6 +38,7 @@ COPY . /var/www
 
 RUN composer install --ignore-platform-reqs
 RUN npm install
+RUN composer update
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
