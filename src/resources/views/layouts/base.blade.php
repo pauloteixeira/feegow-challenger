@@ -25,7 +25,7 @@
             <div class="content">
                 <div class="loader" style="display: none;">
                     <div class="loading-content">
-                        <center>CARREGANDO...</center>
+                        <img src="{{ asset('images/gif/spinner.gif') }}" width="60"/></center>
                     </div>
                 </div>
                     @yield('content')
