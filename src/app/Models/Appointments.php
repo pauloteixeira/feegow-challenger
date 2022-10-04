@@ -9,7 +9,7 @@ class Appointments extends Model
     public $timestamps			= false;
 	protected $primaryKey		= 'id';
 	protected $table			= 'appointments';
-	protected $connection		= 'mysql';
+	protected $connection		= 'app_mysql';
 
 	protected $fillable			= ['specialty_id','professional_id','name','cpf','source_id','birthdate'];
 

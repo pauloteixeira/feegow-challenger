@@ -48,6 +48,7 @@ LOG_LEVEL=debug
 
 DB_CONNECTION=mysql
 DB_HOST=db
+DB_MIGRATE_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=feegow
 DB_USERNAME=root
@@ -63,36 +64,8 @@ FEEGOW_URL_LISTA_PATIENT_SOURCE=https://api.feegow.com/v1/api/patient/list-sourc
 Navegue até a pasta src do projeto e execute o comando abaixo:
 ```bash
 $ composer install --ignore-platform-reqs
-```
-
-Caso não tenha o PHP e o Composer instalado na maquina execute o comando abaixo para executar o composer dentro da imagem do Docker.
-
-```bash
-$ docker exec -it app /bin/bash
-$ composer install --ignore-platform-reqs
 $ composer update
-$ exit
-```
-
-## C0NFIGURANDO O BANCO DA APLICAÇÃO
-O Docker irá montar uma imagem com o MySQL já configurado, porém caso já tenha sido criada uma imagem com os mesmos parâmetros, pode ser que não configure senha corretamente.
-
-Por default o docker vai criar uma imagem já com a senha senhaFeegow2022 configurada. Então basta tentar logar por sua IDE favorita utilizando username: root e password: senhaFeegow2022.
-Se ocorrer tudo certo com login e senha basta executar o script de criação da tabela abaixo:
-
-```SQL
-USE feegow;
-CREATE TABLE IF NOT EXISTS `feegow`.`appointments` (
-	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    specialty_id INT UNSIGNED NOT NULL, 
-    professional_id INT UNSIGNED NOT NULL, 
-    name VARCHAR(255) NOT NULL, 
-    cpf CHAR(14) NOT NULL, 
-    source_id INT UNSIGNED NOT NULL, 
-    birthdate DATE NOT NULL,
-    date_time DATE NULL,
-    PRIMARY KEY (`id`)
-) ENGINE = InnoDB;
+$ php artisan migrate
 ```
 
 ## UTILIZAR A APLICAÇÃO

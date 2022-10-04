@@ -1,7 +1,7 @@
 FROM php:7.3-fpm
 
 #COPY composer.lock AND composer.json
-COPY composer.json /var/www/
+COPY composer.lock composer.json /var/www/
 
 #SET WOKING DIRECTORY
 WORKDIR /var/www
