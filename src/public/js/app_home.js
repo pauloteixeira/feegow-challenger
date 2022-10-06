@@ -97,19 +97,27 @@ function verifyIfTratamentoExists( value ) {
     return value + " ";
 }
 
+function tratamentoImagens(value) {
+    if( String(value).length == 0 || value == "null" || value == null || value == undefined ) return false;
+
+    return true;
+}
+
 function mountHtmlSpecialists( data, especialidade_id ) {
     let countItems  = 0;
     let _html       = '';
 
     for( var key in data ){
-        let professionalName = verifyIfTratamentoExists(data[key].tratamento)+data[key].nome
+        let professionalName = verifyIfTratamentoExists(data[key].tratamento)+data[key].nome;
+        let foto = tratamentoImagens(data[key].foto) ? data[key].foto : "/images/avatar.jpg";
+
         if( ++countItems === 1 ) {
             _html += '<div class="row">';
         }
 
         _html += '  <div class="col-md-3 border-box">';
         _html += '      <div class="row">';
-        _html += '          <div class="col-md-4"><img src="/images/avatar.jpg" alt="avatar" width="50px"></div>';
+        _html += '          <div class="col-md-4"><img src="'+foto+'" alt="avatar" width="50px"></div>';
         _html += '          <div class="col-md-8 title-name-doctor">'+professionalName+'</div>';
         _html += '      </div>';
         _html += '      <div class="row">';
